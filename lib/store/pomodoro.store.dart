@@ -6,26 +6,26 @@ part 'pomodoro.store.g.dart';
 
 class PomodoroStore = _PomodoroStore with _$PomodoroStore;
 
-enum TipoIntervalo { trabalho, descanso }
+enum TipoIntervalo { estudo, descanso }
 
 abstract class _PomodoroStore with Store {
   @observable
   bool iniciado = false;
 
   @observable
-  int minutos = 2;
+  int minutos = 25;
 
   @observable
   int segundos = 0;
 
   @observable
-  int tempoTrabalho = 2;
+  int tempoEstudo = 25;
 
   @observable
-  int tempoDescanso = 1;
+  int tempoDescanso = 5;
 
   @observable
-  TipoIntervalo tipoIntervalo = TipoIntervalo.trabalho;
+  TipoIntervalo tipoIntervalo = TipoIntervalo.estudo;
 
   Timer? cronometro;
 
@@ -53,22 +53,22 @@ abstract class _PomodoroStore with Store {
   @action
   void reiniciar() {
     parar();
-    minutos = estaTrabalhando() ? tempoTrabalho : tempoDescanso;
+    minutos = estaEstudando() ? tempoEstudo : tempoDescanso;
     segundos = 0;
   }
 
   @action
-  void incrementarTempoTrabalho() {
-    tempoTrabalho++;
-    if (estaTrabalhando()) {
+  void incrementarTempoEstudo() {
+    tempoEstudo++;
+    if (estaEstudando()) {
       reiniciar();
     }
   }
 
   @action
-  void decrementarTempoTrabalho() {
-    tempoTrabalho--;
-    if (estaTrabalhando()) {
+  void decrementarTempoEstudo() {
+    tempoEstudo--;
+    if (estaEstudando()) {
       reiniciar();
     }
   }
@@ -89,8 +89,8 @@ abstract class _PomodoroStore with Store {
     }
   }
 
-  bool estaTrabalhando() {
-    return tipoIntervalo == TipoIntervalo.trabalho;
+  bool estaEstudando() {
+    return tipoIntervalo == TipoIntervalo.estudo;
   }
 
   bool estaDescansando() {
@@ -98,12 +98,12 @@ abstract class _PomodoroStore with Store {
   }
 
   void _trocarTipoIntervalo() {
-    if (estaTrabalhando()) {
+    if (estaEstudando()) {
       tipoIntervalo = TipoIntervalo.descanso;
       minutos = tempoDescanso;
     } else {
-      tipoIntervalo = TipoIntervalo.trabalho;
-      minutos = tempoTrabalho;
+      tipoIntervalo = TipoIntervalo.estudo;
+      minutos = tempoEstudo;
     }
     segundos = 0;
   }

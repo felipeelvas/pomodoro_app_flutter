@@ -57,19 +57,19 @@ mixin _$PomodoroStore on _PomodoroStore, Store {
     });
   }
 
-  late final _$tempoTrabalhoAtom =
-      Atom(name: '_PomodoroStore.tempoTrabalho', context: context);
+  late final _$tempoEstudoAtom =
+      Atom(name: '_PomodoroStore.tempoEstudo', context: context);
 
   @override
-  int get tempoTrabalho {
-    _$tempoTrabalhoAtom.reportRead();
-    return super.tempoTrabalho;
+  int get tempoEstudo {
+    _$tempoEstudoAtom.reportRead();
+    return super.tempoEstudo;
   }
 
   @override
-  set tempoTrabalho(int value) {
-    _$tempoTrabalhoAtom.reportWrite(value, super.tempoTrabalho, () {
-      super.tempoTrabalho = value;
+  set tempoEstudo(int value) {
+    _$tempoEstudoAtom.reportWrite(value, super.tempoEstudo, () {
+      super.tempoEstudo = value;
     });
   }
 
@@ -142,22 +142,22 @@ mixin _$PomodoroStore on _PomodoroStore, Store {
   }
 
   @override
-  void incrementarTempoTrabalho() {
+  void incrementarTempoEstudo() {
     final _$actionInfo = _$_PomodoroStoreActionController.startAction(
-        name: '_PomodoroStore.incrementarTempoTrabalho');
+        name: '_PomodoroStore.incrementarTempotempoEstudo');
     try {
-      return super.incrementarTempoTrabalho();
+      return super.incrementarTempoEstudo();
     } finally {
       _$_PomodoroStoreActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void decrementarTempoTrabalho() {
+  void decrementarTempoEstudo() {
     final _$actionInfo = _$_PomodoroStoreActionController.startAction(
-        name: '_PomodoroStore.decrementarTempoTrabalho');
+        name: '_PomodoroStore.decrementarTempoEstudo');
     try {
-      return super.decrementarTempoTrabalho();
+      return super.decrementarTempoEstudo();
     } finally {
       _$_PomodoroStoreActionController.endAction(_$actionInfo);
     }
@@ -191,7 +191,7 @@ mixin _$PomodoroStore on _PomodoroStore, Store {
 iniciado: ${iniciado},
 minutos: ${minutos},
 segundos: ${segundos},
-tempoTrabalho: ${tempoTrabalho},
+tempoEstudo: ${tempoEstudo},
 tempoDescanso: ${tempoDescanso},
 tipoIntervalo: ${tipoIntervalo}
     ''';

@@ -39,7 +39,7 @@ class EntradaTempo extends StatelessWidget {
                 shape: const CircleBorder(),
                 padding: const EdgeInsets.all(15),
                 backgroundColor:
-                    store.estaTrabalhando() ? Colors.red : Colors.green,
+                    store.estaEstudando() ? Colors.red : Colors.green,
               ),
               child: const Icon(
                 Icons.arrow_downward,
@@ -58,7 +58,7 @@ class EntradaTempo extends StatelessWidget {
                 shape: const CircleBorder(),
                 padding: const EdgeInsets.all(15),
                 backgroundColor:
-                    store.estaTrabalhando() ? Colors.red : Colors.green,
+                    store.estaEstudando() ? Colors.red : Colors.green,
               ),
               child: const Icon(
                 Icons.arrow_upward,

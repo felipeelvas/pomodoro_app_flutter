@@ -14,13 +14,13 @@ class Cronometro extends StatelessWidget {
     return Observer(
       builder: (_) {
         return Container(
-          color: store.estaTrabalhando() ? Colors.red : Colors.green,
+          color: store.estaEstudando() ? Colors.red : Colors.green,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                store.estaTrabalhando()
-                    ? 'Hora de Trabalhar'
+                store.estaEstudando()
+                    ? 'Hora de Estudar'
                     : 'Hora de Descansar',
                 style: const TextStyle(
                   fontSize: 40,
